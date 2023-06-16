@@ -7,9 +7,19 @@ const loadTemparature = city => {
         .then(data => displayTemparature(data))
 }
 const displayTemparature = data => {
+
+    const displayCity = document.getElementById('display-city');
+    displayCity.innerText = data.name;
+
     const temparature = document.getElementById('temparature');
-    temparature.innerText = data.main.temp
+    temparature.innerText = data.main.temp;
+    
+    const humidity=document.getElementById('condition');
+    humidity.innerText=data.weather[0].main;
 }
+
+
+
 // const displayTemparature = data => {
 //     setInnerTextById('temparature', data.main.temp);
 //     setInnerTextById('condition', data.weather[0].main)
@@ -18,9 +28,9 @@ document.getElementById('search-btn').addEventListener('click', function () {
     const searchField = document.getElementById('search_field');
     const city = searchField.value;
     loadTemparature(city)
-    const displayCity = document.getElementById('display-city');
-    displayCity.innerText = city;
+    
     searchField.value = ''
+
 })
 
 
